@@ -59,6 +59,7 @@ void uhid_set_non_blocking(int fd)
 static int uhid_write(int fd, const struct uhid_event *ev)
 {
     ssize_t ret = TEMP_FAILURE_RETRY(write(fd, ev, sizeof(*ev)));
+
     if (ret < 0){
         int rtn = -errno;
         APPL_TRACE_ERROR("%s: Cannot write to uhid:%s",
